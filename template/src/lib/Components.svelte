@@ -1,45 +1,46 @@
 <script lang="ts">
-  import { Source, EditorStyles } from "@sparklapse/breakfast";
+  import { EditorStyles } from "@sparklapse/breakfast";
   import type { PluginModule } from "@sparklapse/breakfast";
-  export let components: PluginModule["components"];
 
-  export let dataSets: Record<string, unknown>[] = structuredClone(
-    components.map((c) => c.defaults)
-  );
+  export let pluginComponent: PluginModule["components"][0];
+  const { label, component, editor, defaults } = pluginComponent;
+  let data: Record<string, unknown> = structuredClone(defaults);
 </script>
 
-<div class="flex flex-col gap-2">
-  {#each components as { label, component, editor, defaults }, i}
-    <div class="border rounded shadow p-2">
-      <h3 class="text-xl">{label}</h3>
-      <div class="flex gap-2">
-        <div>
-          <h4 class="font-bold">Preview</h4>
-          <div
-            class="relative block w-[300px] min-h-[50px] max-h-[400px] box-content border-2 border-dashed resize-y overflow-hidden"
-          >
-            <svelte:component this={component} {...dataSets[i]} />
-          </div>
-        </div>
-        <div class="max-w-sm w-full shrink-0">
-          <h4 class="mb-2 font-bold">Editor</h4>
-          {#if editor}
-            <div class="max-h-[400px] overflow-y-auto">
-              <EditorStyles>
-                <svelte:component this={editor} bind:data={dataSets[i]} />
-              </EditorStyles>
-            </div>
-          {:else}
-            <sub>No editor for this component</sub>
-          {/if}
-        </div>
-        <div class="w-full overflow-auto">
-          <h4 class="font-bold">Default Values</h4>
-          <code class="block whitespace-pre text-sm leading-4"
-            >{JSON.stringify(defaults, undefined, 2)}</code
-          >
+<div class="flex flex-col gap-2 w-full h-full">
+  <div class="border rounded shadow p-2 h-full">
+    <h3 class="text-xl">{label}</h3>
+    <div class="flex gap-2">
+      <div>
+        <h4 class="font-bold">Preview</h4>
+        <div
+          class="relative block w-[300px] min-h-[50px] max-h-[320px] box-content border-2 border-dashed resize-y overflow-hidden"
+        >
+          <svelte:component this={component} {...data} />
         </div>
       </div>
+      <div class="w-full">
+        <div class="flex justify-between items-baseline">
+          <h4 class="font-bold">Editor</h4>
+          <button
+            class="bg-red-700 text-white text-sm rounded px-1"
+            on:click={() => {
+              data = structuredClone(defaults);
+            }}
+          >
+            Reset to Defaults
+          </button>
+        </div>
+        {#if editor}
+          <div class="h-[20.5rem] overflow-y-auto px-1">
+            <EditorStyles>
+              <svelte:component this={editor} bind:data />
+            </EditorStyles>
+          </div>
+        {:else}
+          <sub>No editor for this component</sub>
+        {/if}
+      </div>
     </div>
-  {/each}
+  </div>
 </div>

@@ -49,6 +49,10 @@ export default {
       "svelte/store": "svelteStore",
       "svelte/transition": "svelteTransition",
     }),
-    terser(),
+    terser({
+      mangle: {
+        reserved: ["id", "name", "version", "author"],
+      },
+    }),
   ],
 };

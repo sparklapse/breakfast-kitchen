@@ -1,11 +1,10 @@
 import type { PluginModule } from "@sparklapse/breakfast";
 
 import Colors from "./components/Colors.svelte";
-import Text from "./components/Text.svelte";
-import TextEditor from "./components/TextEditor.svelte";
+import ColorsEditor from "./components/ColorsEditor.svelte";
 
 export const id = "example";
-export const name = "With Editor";
+export const name = "Your Plugin";
 export const version = "0.0.0";
 export const author = "You";
 export const components: PluginModule["components"] = [
@@ -13,16 +12,10 @@ export const components: PluginModule["components"] = [
     id: "color",
     label: "Colors",
     component: Colors,
-    defaults: {},
-  },
-  {
-    id: "text",
-    label: "Text",
-    component: Text,
-    editor: TextEditor,
+    editor: ColorsEditor,
     defaults: {
-      text: "The quick brown fox\njumps over\nthe lazy dog.",
-      wrap: true,
+      speed: 0.1,
+      offset: 0,
     },
   },
 ];
