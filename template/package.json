@@ -32,6 +32,6 @@
     "vite": "^5.0.8"
   },
   "dependencies": {
-    "@sparklapse/breakfast": "workspace:packages/@sparklapse/breakfast"
+    "@sparklapse/breakfast": "^1.0.0"
   }
 }
