@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { Source, EditorStyles } from "@sparklapse/dots";
-  import type { PluginModule } from "@sparklapse/dots";
+  import { Source, EditorStyles } from "@sparklapse/breakfast";
+  import type { PluginModule } from "@sparklapse/breakfast";
   export let components: PluginModule["components"];
 
   export let dataSets: Record<string, unknown>[] = structuredClone(

@@ -19,8 +19,8 @@ export default {
       name: "prevent-bad-imports",
       transform: (code, id) => {
         if (!id.includes(path.resolve("./src/plugin"))) return;
-        if (/['"]@sparklapse\/dots['"]/gm.test(code))
-          throw Error('Use "@sparklapse/dots/plugin" instead.');
+        if (/['"]@sparklapse\/breakfast['"]/gm.test(code))
+          throw Error('Use "@sparklapse/breakfast/plugin" instead.');
         return null;
       },
     },

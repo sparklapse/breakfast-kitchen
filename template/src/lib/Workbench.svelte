@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { pluginModuleType } from "@sparklapse/dots";
+  import { pluginModuleType } from "@sparklapse/breakfast";
   import * as p from "../plugin";
   import Components from "./Components.svelte";
 
@@ -9,7 +9,7 @@
 </script>
 
 <main class="p-2">
-  <h1 class="text-xl font-bold">Dots Plugin Workbench</h1>
+  <h1 class="text-xl font-bold">Breakfast Plugin Workbench</h1>
   {#if error}
     <div class="bg-red-50 p-2 rounded">
       <h2 class="text-red-950 font-bold">Error Loading Plugin</h2>

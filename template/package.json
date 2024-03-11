@@ -1,5 +1,5 @@
 {
-  "name": "dots-plugin",
+  "name": "breakie-plugin",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -29,6 +29,6 @@
     "vite": "^5.0.8"
   },
   "dependencies": {
-    "@sparklapse/dots": "workspace:packages/@sparklapse/dots"
+    "@sparklapse/breakfast": "workspace:packages/@sparklapse/breakfast"
   }
 }
