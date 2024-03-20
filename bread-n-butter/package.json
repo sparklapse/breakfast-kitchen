@@ -36,6 +36,6 @@
   },
   "dependencies": {
     "@sparklapse/breakfast": "workspace:packages/@sparklapse/breakfast",
-    "bits-ui": "^0.19.7"
+    "bits-ui": "^0.20.0"
   }
 }
