@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { EditorStyles } from "@sparklapse/breakfast";
   import type { PluginModule } from "@sparklapse/breakfast";
 
   export let pluginComponent: PluginModule["components"][0];
@@ -33,9 +32,7 @@
         </div>
         {#if editor}
           <div class="h-[20.5rem] overflow-y-auto px-1">
-            <EditorStyles>
-              <svelte:component this={editor} bind:data />
-            </EditorStyles>
+            <svelte:component this={editor} bind:data />
           </div>
         {:else}
           <sub>No editor for this component</sub>
