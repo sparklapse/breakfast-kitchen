@@ -7,7 +7,7 @@
     "dist"
   ],
   "scripts": {
-    "dev": "vite",
+    "dev": "node ./scripts/dev.js",
     "build": "tsc && vite build"
   },
   "devDependencies": {
@@ -15,7 +15,8 @@
     "rollup-plugin-external-globals": "^0.10.0",
     "typescript": "^5.4.5",
     "vite": "^5.2.10",
-    "vite-plugin-solid": "^2.10.2"
+    "vite-plugin-solid": "^2.10.2",
+    "ws": "^8.17.0"
   },
   "dependencies": {
     "solid-js": "^1.8.17"
