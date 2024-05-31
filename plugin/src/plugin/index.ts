@@ -1,7 +1,7 @@
 import type { PluginModule } from "@sparklapse/breakfast";
 
 // Import your components here
-import * as Text from "./components/Example";
+import * as Example from "./components/Example";
 
 // Define your plugin here
 export const id = "example";
@@ -12,7 +12,7 @@ export const components: PluginModule["components"] = [
   {
     id: "example",
     label: "Example",
-    component: Text.Component,
-    editor: Text.Editor,
+    component: Example.Component,
+    editor: Example.Editor,
   },
 ];
