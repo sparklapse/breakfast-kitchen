@@ -27,7 +27,9 @@ server.on("connection", async (socket) => {
   socket.send(plugin);
 });
 
-watcher.on("change", async () => {
+watcher.on("event", async (event) => {
+  if (event.code !== "BUNDLE_END") return;
+
   const plugin = await readFile(resolve("./dist/plugin.js"), {
     encoding: "utf-8",
   });
