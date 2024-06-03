@@ -1,15 +1,15 @@
-import { build } from "vite";
+import { watch } from "rollup";
 import { WebSocketServer } from "ws";
 import { resolve } from "node:path";
 import { readFile } from "node:fs/promises";
+import config from "../rollup.config.mjs";
 
 /**
  * @type {import("rollup").RollupWatcher}
  */
-const watcher = await build({
-  build: {
-    watch: {},
-  },
+const watcher = watch({
+  ...config,
+  watch: {},
 });
 
 const server = new WebSocketServer({
@@ -28,6 +28,9 @@ server.on("connection", async (socket) => {
 });
 
 watcher.on("event", async (event) => {
+  if (event.code === "BUNDLE_START") console.log("Re-building...");
+  if (event.code === "BUNDLE_END")
+    console.log("Build complete! Sending to brekkie.");
   if (event.code !== "BUNDLE_END") return;
 
   const plugin = await readFile(resolve("./dist/plugin.js"), {
