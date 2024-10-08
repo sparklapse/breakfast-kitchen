@@ -1,0 +1,15 @@
+{
+  "name": "overlay-script-svelte",
+  "type": "module",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@sveltejs/kit": "^2.5.28",
+    "@types/node": "^22.7.3",
+    "esbuild": "^0.24.0",
+    "svelte": "^4.2.19"
+  },
+  "scripts": {
+    "cook": "node cook.js",
+    "build": "node cook.js"
+  }
+}
