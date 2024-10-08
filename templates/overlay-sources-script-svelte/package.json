@@ -1,7 +1,7 @@
 {
   "name": "overlay-script-svelte",
   "type": "module",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "devDependencies": {
     "@sveltejs/kit": "^2.5.28",
     "@types/node": "^22.7.3",
