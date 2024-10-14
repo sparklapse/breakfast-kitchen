@@ -5,11 +5,16 @@
   "devDependencies": {
     "@sveltejs/kit": "^2.5.28",
     "@types/node": "^22.7.3",
+    "autoprefixer": "^10.4.20",
     "esbuild": "^0.24.0",
+    "postcss": "^8.4.47",
     "svelte": "^4.2.19"
   },
   "scripts": {
     "cook": "node cook.js",
     "build": "node cook.js"
+  },
+  "dependencies": {
+    "svelte-preprocess": "^6.0.3"
   }
 }

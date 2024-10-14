@@ -1,7 +1,9 @@
 import { resolve } from "node:path";
 import { readFile, readdir, writeFile } from "node:fs/promises";
-import { compile } from "svelte/compiler";
+import { compile, preprocess } from "svelte/compiler";
 import { build } from "esbuild";
+import postcss from "postcss";
+import autoprefixer from "autoprefixer";
 import config from "./svelte.config.js";
 import plugin from "./src/plugin.js";
 
@@ -10,7 +12,21 @@ const sveltePlugin = {
   setup: (build) => {
     build.onLoad({ filter: /\.svelte$/ }, async (args) => {
       const path = resolve(import.meta.dirname, "src/components", args.path);
-      let { js } = compile(await readFile(path, "utf8"), { ...config.compilerOptions, filename: args.path });
+      let source = await readFile(path, "utf8");
+      // Config preprocess (svelte-preprocess) by default
+      if (config.preprocess) {
+        const processed = await preprocess(source, config.preprocess);
+        source = processed.code;
+      }
+      // Postcss Autoprefixer
+      const stylePrefixed = await preprocess(source, {
+        style: async ({ content }) => {
+          const result = await postcss([autoprefixer({ overrideBrowserslist: ["chrome <= 103"] })]).process(content, { from: undefined });
+          return { code: result.css, map: "" };
+        }
+      });
+      source = stylePrefixed.code;
+      let { js } = compile(source, { ...config.compilerOptions, filename: args.path });
 
       return {
         contents: js.code,

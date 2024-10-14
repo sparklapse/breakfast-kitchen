@@ -8,6 +8,12 @@
   export let meal = "breakfast";
 </script>
 
-<p>
+<p class="beans">
   My favourite meal is {meal}!
 </p>
+
+<style>
+.beans {
+  background-clip: text;
+}
+</style>

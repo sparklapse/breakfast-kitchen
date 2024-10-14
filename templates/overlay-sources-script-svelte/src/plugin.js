@@ -1,4 +1,4 @@
-/** @type {import("@sparklapse/breakfast/overlay").Script} */
+/** @type {import("@brekkie/overlay").Script} */
 export default {
   id: "script-id",
   label: "Your Script",
